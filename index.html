@@ -2,18 +2,18 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <title>Infographic Prompt Builder - Thầy Vũ Tiến Lực</title>
+  <title>Infographic Formpt Generator - Thầy Vũ Tiến Lực</title>
   <style>
     :root {
-      --bg: #f4f6fb;
+      --bg: #f3f4f6;
       --card: #ffffff;
       --primary: #2563eb;
-      --primary-soft: #dbeafe;
-      --border: #e2e8f0;
-      --text: #1f2933;
+      --primary-soft: #e0edff;
+      --border: #e5e7eb;
+      --text: #111827;
       --muted: #6b7280;
       --radius: 14px;
-      --shadow: 0 14px 35px rgba(15, 23, 42, 0.12);
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
     }
 
     * {
@@ -22,46 +22,44 @@
 
     body {
       margin: 0;
+      min-height: 100vh;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
-      background: radial-gradient(circle at top, #e0edff 0, #f4f6fb 45%, #f9fafb 100%);
-      color: var(--text);
-      min-height: 100vh;
+      background: radial-gradient(circle at top, #dbeafe 0, #f3f4f6 40%, #f9fafb 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      padding: 20px;
+      color: var(--text);
     }
 
     .app {
       width: 100%;
-      max-width: 1080px;
-      background: linear-gradient(135deg, #ffffff, #f8fbff);
-      border-radius: 24px;
+      max-width: 960px;
+      background: linear-gradient(135deg, #ffffff, #f9fbff);
+      border-radius: 22px;
       box-shadow: var(--shadow);
-      padding: 24px 26px 26px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 20px 22px 22px;
     }
 
     .header {
+      margin-bottom: 12px;
       display: flex;
       justify-content: space-between;
-      gap: 16px;
+      gap: 12px;
       align-items: center;
-      margin-bottom: 16px;
     }
 
     .title-block h1 {
       margin: 0;
-      font-size: 1.3rem;
-      font-weight: 700;
-      letter-spacing: 0.01em;
+      font-size: 1.25rem;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .title-pill {
+    .pill-main {
       font-size: 0.7rem;
       padding: 3px 8px;
       border-radius: 999px;
@@ -69,17 +67,17 @@
       color: var(--primary);
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
     }
 
     .title-block p {
       margin: 4px 0 0;
-      font-size: 0.83rem;
+      font-size: 0.82rem;
       color: var(--muted);
     }
 
-    .badge {
-      font-size: 0.8rem;
+    .tag {
+      font-size: 0.78rem;
       padding: 6px 10px;
       border-radius: 999px;
       background: #111827;
@@ -89,18 +87,13 @@
       gap: 6px;
     }
 
-    .badge span {
-      font-size: 0.9rem;
-    }
-
     .grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-      gap: 18px;
-      margin-top: 8px;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.05fr);
+      gap: 16px;
     }
 
-    @media (max-width: 880px) {
+    @media (max-width: 840px) {
       .grid {
         grid-template-columns: minmax(0, 1fr);
       }
@@ -114,7 +107,7 @@
       background: var(--card);
       border-radius: var(--radius);
       border: 1px solid var(--border);
-      padding: 16px 16px 14px;
+      padding: 14px 14px 12px;
       position: relative;
       overflow: hidden;
     }
@@ -130,36 +123,37 @@
     .card-header {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 8px;
       margin-bottom: 10px;
     }
 
     .card-header h2 {
       margin: 0;
-      font-size: 0.98rem;
+      font-size: 0.95rem;
     }
 
     .pill {
       font-size: 0.7rem;
       padding: 3px 7px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      background: rgba(248, 250, 252, 0.9);
       color: #4b5563;
-      background: rgba(248, 250, 252, 0.85);
     }
 
     label {
-      display: block;
-      font-size: 0.83rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      margin-bottom: 4px;
+      display: block;
+      margin-bottom: 3px;
       color: #374151;
     }
 
     .hint {
       font-size: 0.75rem;
-      margin: 2px 0 8px;
       color: var(--muted);
+      margin: 0 0 6px;
     }
 
     textarea,
@@ -169,10 +163,9 @@
       border: 1px solid var(--border);
       padding: 8px 10px;
       font-size: 0.86rem;
-      resize: vertical;
-      min-height: 60px;
       font-family: inherit;
       background: #f9fafb;
+      resize: vertical;
       transition: border-color 0.14s ease, box-shadow 0.14s ease,
         background 0.14s ease;
     }
@@ -181,41 +174,39 @@
     select:focus {
       outline: none;
       border-color: var(--primary);
-      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.28);
       background: #ffffff;
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.25);
     }
 
-    textarea#topic {
-      min-height: 120px;
+    textarea#content {
+      min-height: 160px;
     }
 
-    textarea#outputPrompt {
-      min-height: 220px;
-      background: #0b1020;
+    textarea#output {
+      min-height: 240px;
+      background: #020617;
       color: #e5e7eb;
       font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
         Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      border-color: #020617;
+      border-radius: 12px;
       font-size: 0.83rem;
       line-height: 1.5;
-      padding: 10px 11px;
-      border-radius: 12px;
-      border-color: #111827;
     }
 
-    .select-row {
+    .row {
       display: flex;
       gap: 10px;
       margin-top: 6px;
     }
 
-    .select-row > div {
+    .row > div {
       flex: 1;
     }
 
     .btn-row {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       gap: 8px;
       margin-top: 10px;
     }
@@ -237,7 +228,7 @@
     }
 
     .btn-primary {
-      background: radial-gradient(circle at top left,#60a5fa,#2563eb);
+      background: radial-gradient(circle at top left, #60a5fa, #2563eb);
       color: #f9fafb;
       box-shadow: 0 10px 20px rgba(37, 99, 235, 0.45);
     }
@@ -250,28 +241,12 @@
 
     .btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 12px 26px rgba(15, 23, 42, 0.18);
+      box-shadow: 0 12px 26px rgba(15, 23, 42, 0.2);
     }
 
     .btn:active {
       transform: translateY(0);
       box-shadow: none;
-    }
-
-    .chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 4px;
-    }
-
-    .chip {
-      font-size: 0.72rem;
-      padding: 4px 7px;
-      border-radius: 999px;
-      border: 1px dashed rgba(148, 163, 184, 0.9);
-      color: #6b7280;
-      background: rgba(248, 250, 252, 0.95);
     }
 
     .footer-note {
@@ -286,11 +261,11 @@
 
     .toast {
       position: fixed;
-      bottom: 14px;
       right: 14px;
+      bottom: 14px;
       background: #111827;
       color: #e5e7eb;
-      padding: 8px 12px;
+      padding: 7px 12px;
       border-radius: 999px;
       font-size: 0.78rem;
       display: none;
@@ -329,17 +304,12 @@
   <div class="app">
     <div class="header">
       <div class="title-block">
-        <div class="title-pill">Gemini Pro · Infographic</div>
-        <h1>
-          Bộ sinh formpt tạo infographic dạy học Toán
-        </h1>
-        <p>
-          Nhập nội dung & chọn loại hoạt động → Sinh câu lệnh formpt cho Gemini Pro Image.
-        </p>
+        <div class="pill-main">Gemini Pro · Infographic</div>
+        <h1>Formpt sinh infographic cho nội dung dạy học Toán</h1>
+        <p>Nhập nội dung → chọn mục đích & phong cách → sinh formpt hoàn chỉnh để dán vào Gemini Pro Image.</p>
       </div>
-      <div class="badge">
-        <span>👨‍🏫</span>
-        <span>Thiết kế cho: Thầy Vũ Tiến Lực – NHC</span>
+      <div class="tag">
+        👨‍🏫 Dành cho Thầy Vũ Tiến Lực – NHC
       </div>
     </div>
 
@@ -347,99 +317,143 @@
       <!-- LEFT: INPUT -->
       <div class="card">
         <div class="card-header">
-          <h2>1. Nhập nội dung / chủ đề</h2>
+          <h2>1. Nhập nội dung & lựa chọn</h2>
           <span class="pill">Input</span>
         </div>
 
-        <label for="topic">Nội dung / chủ đề bài học</label>
+        <label for="content">Nội dung / chủ đề muốn tạo infographic</label>
         <p class="hint">
-          Ví dụ: “Hàm số bậc hai và ứng dụng”, “Bài tập về nhà chương Hàm số”, “Khởi động: vận tốc – quãng đường thực tế”,…
+          Ví dụ: khởi động hàm số bậc hai, phiếu bài tập về nhà, bài tập HSG bất đẳng thức, tóm tắt kiến thức trọng tâm, phiếu 20 bài trên lớp, phiếu bài tập về nhà tự chọn, phiếu học tập trên lớp đầy đủ, v.v.
         </p>
-        <textarea
-          id="topic"
-          placeholder="Nhập mô tả ngắn gọn về nội dung hoặc chủ đề thầy muốn tạo infographic (có thể kèm lớp, mục tiêu, bối cảnh thực tế)…"
-        ></textarea>
+        <textarea id="content" placeholder="Thầy dán hoặc gõ nội dung bài học, bài tập, kiến thức… vào đây. Nội dung này sẽ được đưa lên trước, sau đó nối với formpt sinh infographic."></textarea>
 
-        <div class="select-row">
+        <div class="row">
           <div>
-            <label for="activityType">Loại hoạt động</label>
-            <select id="activityType">
-              <option value="">-- Chọn 1 loại --</option>
-              <option value="warmup">1. Gợi mở vào bài học (Khởi động)</option>
-              <option value="class_practice">2. Bài tập áp dụng trong lớp</option>
-              <option value="homework">3. Bài tập về nhà cho lớp</option>
-              <option value="hsg">4. Bài tập học sinh giỏi</option>
-              <option value="core_knowledge">5. Kiến thức trọng tâm</option>
+            <label for="purpose">Mục đích infographic</label>
+            <select id="purpose">
+              <option value="">-- Chọn mục đích --</option>
+              <option value="Gợi mở vào bài học">1. Gợi mở vào bài học</option>
+              <option value="Bài tập áp dụng trong lớp">2. Bài tập áp dụng trong lớp</option>
+              <option value="Bài tập về nhà">3. Bài tập về nhà cho lớp</option>
+              <option value="Bài tập học sinh giỏi">4. Bài tập học sinh giỏi</option>
+              <option value="Kiến thức trọng tâm">5. Kiến thức trọng tâm</option>
+              <option value="phieu20">6. Phiếu học tập trên lớp (20 bài từ cơ bản đến nâng cao, 1 trang A4, kèm đáp số)</option>
+              <option value="homework_sheet">
+                7. Phiếu bài tập về nhà tự chọn (trắc nghiệm 4 phương án + đúng/sai + trả lời ngắn, A4 dọc)
+              </option>
+              <option value="class_sheet_full">
+                8. Phiếu học tập trên lớp: Kiến thức cần nhớ + ví dụ mẫu + bài tập tương tự (cơ bản–nâng cao) + ví dụ thực tế, A4 dọc
+              </option>
+              <option value="group_project">
+                9. Phiếu hoạt động nhóm / Dự án mini Toán – STEM
+              </option>
+              <option value="checklist_exam">
+                10. Checklist ôn tập trước kiểm tra / thi
+              </option>
+              <option value="semester_review">
+                11. Phiếu làm bài ôn tập học kì (giữa kỳ / cuối kỳ)
+              </option>
             </select>
           </div>
           <div>
-            <label for="style">Phong cách hình ảnh (10 style)</label>
+            <label for="style">Phong cách hình ảnh (20 style)</label>
             <select id="style">
-              <option value="Pastel giáo dục, màu dịu, dễ in ấn, icon học đường.">Pastel giáo dục (dịu, dễ in)</option>
-              <option value="Năng lượng, màu tươi sáng, mang cảm giác chuyển động, phù hợp hoạt động khởi động.">Năng lượng – Sôi động</option>
-              <option value="Tối giản, nhiều khoảng trắng, tập trung vào chữ và cấu trúc logic.">Tối giản – Tập trung nội dung</option>
-              <option value="STEM Tech, tông xanh dương – tím, cảm giác công nghệ hiện đại.">STEM Tech – Công nghệ</option>
-              <option value="Phong cách game hóa, có ô nhiệm vụ, thanh tiến độ, huy hiệu thưởng.">Game hóa – Quest / Mission</option>
-              <option value="Vintage bảng phấn, nền xanh/đen, phấn trắng, phù hợp Toán cổ điển.">Vintage – Bảng phấn</option>
-              <option value="Comic, khung tranh, bong bóng hội thoại, vui vẻ, gần gũi.">Comic – Truyện tranh</option>
-              <option value="Neon cyber, màu nổi, phù hợp buổi ngoại khóa, sự kiện.">Neon Cyber – Sự kiện</option>
-              <option value="Đen trắng in ấn tiết kiệm, vẫn rõ cấu trúc box, đường kẻ.">Đen trắng – Tiết kiệm mực</option>
-              <option value="Phong cách infographic hiện đại, icon phẳng, nhịp nhàng, phù hợp trình chiếu 16:9.">Infographic hiện đại – 16:9</option>
+              <option value="">-- Chọn 1 phong cách --</option>
+              <!-- 10 style cơ bản -->
+              <option value="Pastel giáo dục, màu dịu, dễ in cho học sinh.">
+                Pastel giáo dục (dịu, dễ in)
+              </option>
+              <option value="Năng lượng, màu tươi sáng, tạo cảm giác sôi động, phù hợp hoạt động khởi động.">
+                Năng lượng – Sôi động
+              </option>
+              <option value="Tối giản, nhiều khoảng trắng, tập trung vào nội dung và cấu trúc logic.">
+                Tối giản – Tập trung nội dung
+              </option>
+              <option value="STEM Tech, tông xanh dương – tím, mang hơi hướng công nghệ hiện đại.">
+                STEM Tech – Công nghệ
+              </option>
+              <option value="Phong cách game hóa, có ô nhiệm vụ, huy hiệu, thanh tiến độ.">
+                Game hoá – Nhiệm vụ / Quest
+              </option>
+              <option value="Vintage bảng phấn, nền xanh/đen, chữ như viết phấn trắng, gần gũi lớp học.">
+                Vintage – Bảng phấn
+              </option>
+              <option value="Phong cách comic, khung tranh, bong bóng hội thoại, vui nhộn, dễ tiếp cận.">
+                Comic – Truyện tranh
+              </option>
+              <option value="Neon cyber, màu nổi, phù hợp poster / sự kiện / ngoại khóa.">
+                Neon Cyber – Sự kiện
+              </option>
+              <option value="Đen trắng in ấn tiết kiệm, vẫn rõ các box, đường kẻ và cấu trúc.">
+                Đen trắng – Tiết kiệm mực
+              </option>
+              <option value="Infographic hiện đại, icon phẳng, tối ưu trình chiếu 16:9.">
+                Infographic hiện đại – 16:9
+              </option>
+              <!-- 10 style vui nhộn -->
+              <option value="Chủ đề đại dương, tông xanh biển, có sóng nước, sinh vật biển dễ thương (cá, sao biển, san hô) để tạo cảm giác mát mẻ, thư giãn.">
+                Đại dương – Ocean Learning
+              </option>
+              <option value="Chủ đề vũ trụ, nền trời sao, hành tinh, tên lửa, cảm giác khám phá kiến thức như du hành không gian.">
+                Vũ trụ – Space Explorer
+              </option>
+              <option value="Chủ đề bản đồ, la bàn, đường đi, mốc lộ trình, thể hiện quá trình học như hành trình khám phá bản đồ tri thức.">
+                Bản đồ – Learning Map
+              </option>
+              <option value="Chủ đề truy tìm kho báu, có rương vàng, bản đồ X đánh dấu, nhiệm vụ/bài tập là thử thách để mở kho báu tri thức.">
+                Tìm kiếm kho báu – Treasure Hunt
+              </option>
+              <option value="Chủ đề phòng thí nghiệm Toán – Khoa học, ống nghiệm, bánh răng, biểu đồ, tạo cảm giác thực nghiệm và khám phá.">
+                Phòng thí nghiệm – Math Lab
+              </option>
+              <option value="Chủ đề LEGO/khối lắp ghép, các box kiến thức như những mảnh ghép xây tòa nhà tri thức.">
+                Khối ghép – Lego Blocks
+              </option>
+              <option value="Chủ đề giấy note dán (sticky notes), các ý chính nằm trong tờ note màu khác nhau, cảm giác gần gũi sổ tay học tập.">
+                Note dán – Study Notes
+              </option>
+              <option value="Chủ đề Manga/Anime nhẹ nhàng, nét vẽ đơn giản, học sinh kiểu chibi đang học/bàn luận, tạo sự dễ thương, gần gũi.">
+                Manga/Anime – Học vui
+              </option>
+              <option value="Phong cách tối giản đen – trắng cao cấp, dùng nét, khung, gạch chân để nhấn ý chính, rất rõ khi in A4.">
+                Minimal Đen – Trắng Premium
+              </option>
+              <option value="Phong cách gradient màu học đường (xanh dương – tím – hồng nhạt), icon phẳng, cảm giác hiện đại và truyền cảm hứng.">
+                Gradient Học đường – Modern Edu
+              </option>
             </select>
           </div>
-        </div>
-
-        <p class="hint" style="margin-top: 8px;">
-          💡 Gợi ý nhanh: Hãy mô tả rõ mục tiêu (khởi động / luyện tập / HSG / trọng tâm) + bối cảnh thực tế nếu có.
-        </p>
-
-        <div class="chip-row">
-          <div class="chip">Khởi động</div>
-          <div class="chip">Luyện tập trên lớp</div>
-          <div class="chip">Bài tập về nhà</div>
-          <div class="chip">Học sinh giỏi</div>
-          <div class="chip">Kiến thức trọng tâm</div>
         </div>
 
         <div class="btn-row">
-          <button class="btn btn-primary" id="generateBtn">
-            ⚙️ Tạo formpt
-          </button>
-          <button class="btn btn-ghost" id="clearBtn">
-            🧹 Xóa hết
-          </button>
+          <button class="btn btn-primary" id="generateBtn">⚙️ Tạo formpt</button>
+          <button class="btn btn-ghost" id="clearBtn">🧹 Xóa nội dung</button>
         </div>
       </div>
 
       <!-- RIGHT: OUTPUT -->
       <div class="card">
         <div class="card-header">
-          <h2>2. Formpt gửi cho Gemini Pro Image</h2>
+          <h2>2. Formpt để dán vào Gemini Pro Image</h2>
           <span class="pill">Output</span>
         </div>
 
-        <label for="outputPrompt">Câu lệnh formpt</label>
+        <label for="output">Câu lệnh formpt đã sinh</label>
         <p class="hint">
-          Copy toàn bộ nội dung bên dưới và dán vào Gemini Pro Image để tạo infographic.
+          Copy toàn bộ đoạn bên dưới (bao gồm cả nội dung của thầy + formpt) rồi dán vào Gemini Pro Image.
         </p>
-        <textarea
-          id="outputPrompt"
-          placeholder="Formpt sẽ xuất hiện tại đây sau khi thầy nhấn nút “Tạo formpt”."
-          readonly
-        ></textarea>
+        <textarea id="output" readonly placeholder="Formpt sẽ xuất hiện tại đây sau khi thầy nhấn “Tạo formpt”."></textarea>
 
         <div class="btn-row">
-          <button class="btn btn-ghost" id="copyBtn">
-            📋 Copy formpt
-          </button>
+          <button class="btn btn-ghost" id="copyBtn">📋 Copy formpt</button>
           <span class="hint">
-            ✔ Đã tối ưu cho: dạy học tích cực, Toán THPT, infographic 16:9, tiếng Việt.
+            ✔ Vai trò: nhà thiết kế infographic giáo dục + GV Toán THPT dạy học tích cực 20 năm kinh nghiệm.
           </span>
         </div>
 
         <div class="footer-note">
-          <span>👨‍🏫 Vai trò mặc định: Giáo viên Toán THPT dạy học tích cực 20 năm kinh nghiệm.</span>
-          <span>🎯 Dùng được cho mọi chủ đề: khởi động, luyện tập, HSG, trọng tâm.</span>
+          <span>🎯 Dùng cho: Khởi động, bài tập trong lớp, bài tập về nhà, HSG, kiến thức trọng tâm, phiếu 20 bài, phiếu về nhà tự chọn, phiếu học tập trên lớp, hoạt động nhóm, checklist, ôn tập học kì.</span>
+          <span>🖨️ Thiết kế cho A4 & trình chiếu 16:9 (các phiếu có mô tả rõ A4 dọc).</span>
         </div>
       </div>
     </div>
@@ -450,10 +464,10 @@
   </div>
 
   <script>
-    const topicEl = document.getElementById("topic");
-    const activityTypeEl = document.getElementById("activityType");
+    const contentEl = document.getElementById("content");
+    const purposeEl = document.getElementById("purpose");
     const styleEl = document.getElementById("style");
-    const outputEl = document.getElementById("outputPrompt");
+    const outputEl = document.getElementById("output");
     const generateBtn = document.getElementById("generateBtn");
     const clearBtn = document.getElementById("clearBtn");
     const copyBtn = document.getElementById("copyBtn");
@@ -467,166 +481,131 @@
     }
 
     function buildPrompt() {
-      const topicRaw = topicEl.value.trim();
-      const activity = activityTypeEl.value;
+      const content = contentEl.value.trim();
+      const purposeValue = purposeEl.value;
+      const purposeText = purposeEl.options[purposeEl.selectedIndex]?.text || "";
       const styleText = styleEl.options[styleEl.selectedIndex]?.text || "";
-      const styleDetail = styleEl.value || "";
+      const styleDetail = styleEl.value;
 
-      if (!topicRaw) {
+      if (!content) {
         alert("Thầy vui lòng nhập nội dung / chủ đề trước.");
         return "";
       }
-      if (!activity) {
-        alert("Thầy vui lòng chọn loại hoạt động (1–5).");
+      if (!purposeValue) {
+        alert("Thầy vui lòng chọn mục đích infographic.");
+        return "";
+      }
+      if (!styleDetail) {
+        alert("Thầy vui lòng chọn một phong cách hình ảnh.");
         return "";
       }
 
-      const topic = topicRaw.replace(/\s+/g, " ");
+      const headerPart = content + "\n\n";
 
-      let baseIntro =
-        "Tạo infographics với nội dung sau: Đóng vai trò là giáo viên Toán THPT dạy học tích cực có 20 năm kinh nghiệm, hiểu rõ CTGDPT 2018 và tâm lý học sinh, hãy tạo một PROMPT DUY NHẤT để dùng cho Gemini Pro Image nhằm sinh ra một infographic dạy học thật hấp dẫn bằng tiếng Việt.\n\n";
+      let extraBlock = "";
 
-      let commonStyleBlock =
-        "YÊU CẦU CHUNG VỀ PHONG CÁCH HÌNH ẢNH:\n" +
-        "- Phong cách: " +
+      // Các loại PHIẾU có header chung (đầu phiếu)
+      if (
+        purposeValue === "phieu20" ||
+        purposeValue === "homework_sheet" ||
+        purposeValue === "class_sheet_full" ||
+        purposeValue === "group_project" ||
+        purposeValue === "checklist_exam" ||
+        purposeValue === "semester_review"
+      ) {
+        extraBlock +=
+          "YÊU CẦU CHUNG CHO PHẦN ĐẦU PHIẾU (HEADER):\n" +
+          "- Ở đầu phiếu, chỉ hiển thị các dòng:\n" +
+          "  • Tên bài học / Nội dung: (điền tên nội dung tương ứng)\n" +
+          "  • Họ và tên học sinh: .........................................................\n" +
+          "  • Lớp: .............................    Điểm: ............\n" +
+          "  • Nhận xét giáo viên: .....................................................\n" +
+          "- Có dòng nhỏ \"Giáo viên: Thầy Vũ Tiến Lực\" đặt bên dưới hoặc góc phải trên cùng của phiếu.\n\n";
+      }
+
+      // Chi tiết từng loại phiếu đặc biệt
+      if (purposeValue === "phieu20") {
+        extraBlock +=
+          "BỔ SUNG YÊU CẦU RIÊNG CHO PHIẾU HỌC TẬP 20 BÀI TRÊN LỚP:\n" +
+          "- Tổng khoảng 20 bài tập, sắp xếp từ mức cơ bản → trung bình → nâng cao, trong phạm vi chương/bài tương ứng.\n" +
+          "- Thiết kế bố cục để khi in ra vừa trọn trong 1 trang A4 (có thể chia 2 cột nếu cần, nhưng vẫn dễ đọc).\n" +
+          "- Mỗi bài ghi ngắn gọn, đánh số rõ ràng, không trình bày lời giải chi tiết trên phiếu.\n" +
+          "- Ở cuối phiếu có một box nhỏ ghi ĐÁP SỐ cho toàn bộ 20 bài (chỉ ghi kết quả, không giải thích).\n\n";
+      } else if (purposeValue === "homework_sheet") {
+        extraBlock +=
+          "BỔ SUNG YÊU CẦU RIÊNG CHO PHIẾU BÀI TẬP VỀ NHÀ TỰ CHỌN:\n" +
+          "- Bố cục phiếu vừa vặn trong 1 trang A4, khổ dọc (portrait), dễ in cho học sinh.\n" +
+          "- Chia rõ 3 phần:\n" +
+          "  (1) Trắc nghiệm khách quan 4 phương án A/B/C/D (khoảng 6–10 câu).\n" +
+          "  (2) Câu Đúng/Sai (khoảng 4–6 câu), có ô cho học sinh đánh dấu.\n" +
+          "  (3) Câu trả lời ngắn (khoảng 3–6 câu), chừa khoảng trống đủ để học sinh ghi lời giải ngắn.\n" +
+          "- Khuyến khích bố cục gọn, rõ ràng, có đường kẻ/box phân chia từng phần.\n" +
+          "- Không cần in lời giải trên phiếu; giáo viên có thể có đáp án riêng để chấm.\n\n";
+      } else if (purposeValue === "class_sheet_full") {
+        extraBlock +=
+          "BỔ SUNG YÊU CẦU RIÊNG CHO PHIẾU HỌC TẬP TRÊN LỚP (KIẾN THỨC + VÍ DỤ + BÀI TẬP TƯƠNG TỰ):\n" +
+          "- Phiếu trình bày theo khổ A4 dọc (portrait), phù hợp in phát cho học sinh.\n" +
+          "- Chia rõ các vùng nội dung:\n" +
+          "  1) Mục \"Kiến thức cần nhớ\": tóm tắt ngắn gọn công thức, định nghĩa, tính chất chính liên quan đến bài học.\n" +
+          "  2) Mục \"Ví dụ mẫu\": 1–2 ví dụ giải mẫu ở dạng khung, gợi ý từng bước hoặc phần trống để học sinh điền, KHÔNG in sẵn lời giải chi tiết.\n" +
+          "  3) Mục \"Bài tập tương tự\": từ 4–8 bài, sắp xếp từ cơ bản → nâng cao, cùng hoặc gần dạng với ví dụ mẫu.\n" +
+          "  4) Mục \"Bài toán thực tế\": 1–2 bài toán gắn với bối cảnh đời sống/học đường liên quan đến nội dung bài học.\n" +
+          "- Thiết kế mỗi câu/bài có khoảng trống đủ để học sinh ghi lời giải (gạch ngang hoặc ô trống bên dưới câu hỏi).\n" +
+          "- Trên phiếu KHÔNG trình bày lời giải chi tiết.\n" +
+          "- ĐÁP SỐ (nếu có) đặt trong một box nhỏ ở cuối phiếu, chỉ ghi kết quả cuối cho một số bài quan trọng, không giải thích.\n\n";
+      } else if (purposeValue === "group_project") {
+        extraBlock +=
+          "BỔ SUNG CHO PHIẾU HOẠT ĐỘNG NHÓM / DỰ ÁN MINI TOÁN – STEM:\n" +
+          "- Mỗi nhóm gồm khoảng 3–5 học sinh, có phân công vai trò rõ ràng:\n" +
+          "  • Nhóm trưởng (điều phối) • Thư ký • Trình bày • Phụ trách kỹ thuật/thiết kế.\n" +
+          "- Phiếu gồm 4 mục chính:\n" +
+          "  1) Nhiệm vụ dự án / bài toán thực tế cần giải quyết.\n" +
+          "  2) Kế hoạch thực hiện (các bước + mốc thời gian dự kiến).\n" +
+          "  3) Sản phẩm đầu ra: mô hình, poster, slide, đo đạc, video, báo cáo,…\n" +
+          "  4) Tự đánh giá nhóm và đánh giá lẫn nhau ngắn gọn.\n" +
+          "- Không ghi lời giải chi tiết trên phiếu; nhóm nộp sản phẩm để giáo viên đánh giá.\n\n";
+      } else if (purposeValue === "checklist_exam") {
+        extraBlock +=
+          "BỔ SUNG CHO CHECKLIST ÔN TẬP TRƯỚC KIỂM TRA / THI:\n" +
+          "- Phiếu trình bày dạng checklist (ô vuông / dấu tick) cho các nội dung:\n" +
+          "  • Công thức / khái niệm đã ôn.\n" +
+          "  • Mỗi dạng bài đã làm tối thiểu bao nhiêu bài.\n" +
+          "  • Đã tự làm đề mini test 10–15 phút.\n" +
+          "  • Các phần còn yếu cần hỏi thầy/cô hoặc bạn.\n" +
+          "- Có góc nhỏ ghi kế hoạch 3 ngày / 1 tuần trước kiểm tra.\n" +
+          "- Thiết kế rõ ràng, gọn trong 1 trang A4 dọc.\n\n";
+      } else if (purposeValue === "semester_review") {
+        extraBlock +=
+          "BỔ SUNG CHO PHIẾU LÀM BÀI ÔN TẬP HỌC KÌ (GIỮA KỲ / CUỐI KỲ):\n" +
+          "- Gồm các dạng trọng tâm của toàn bộ chương trình học kỳ tương ứng.\n" +
+          "- Bài tập được sắp xếp từ cơ bản → trung bình → nâng cao → mở rộng.\n" +
+          "- Mỗi bài ghi ngắn gọn, có khoảng trống để học sinh tự trình bày.\n" +
+          "- Không trình bày lời giải trên phiếu.\n" +
+          "- ĐÁP SỐ (nếu muốn) đặt trong một box nhỏ cuối trang, gọn, dễ nhìn.\n" +
+          "- Khổ A4 dọc, 1 cột chính để học sinh dễ ghi bài.\n\n";
+      }
+
+      const corePrompt =
+        "Đóng vai trò là nhà thiết kế infographic giáo dục và giáo viên Toán THPT dạy học tích cực 20 năm kinh nghiệm.\n" +
+        "Hãy TẠO INFOGRAPHIC CHO NỘI DUNG TƯƠNG ỨNG TRÊN theo mục đích: " +
+        purposeText +
+        ", trình bày ngắn gọn – trực quan – có các box thông tin rõ ràng – icon minh họa phù hợp với bối cảnh học đường, tối ưu khi trình chiếu trên màn hình 16:9 trong lớp học.\n\n" +
+        "Hãy áp dụng phong cách thiết kế: " +
         styleText +
         " (" +
         styleDetail +
-        ")\n" +
-        "- Bố cục rõ ràng, có các box / khu vực thông tin tách bạch.\n" +
-        "- Tỷ lệ khung hình 16:9, độ phân giải đủ nét để trình chiếu trên máy chiếu lớp học.\n" +
-        "- Ưu tiên font chữ dễ đọc, đậm ở tiêu đề, thân bài rõ ràng, không quá nhiều chữ trong một box.\n" +
-        "- Màu sắc thân thiện với học đường, không chói, phù hợp in màu hoặc chiếu màn hình.\n\n";
+        ").\n\n" +
+        extraBlock +
+        "YÊU CẦU HÌNH ẢNH CHUNG:\n" +
+        "- Font chữ dễ đọc, căn lề thoáng, màu sắc hài hòa, không quá chói.\n" +
+        "- Ưu tiên bố cục xem nhanh: tiêu đề → các box nội dung chính → ví dụ/bài tập → ghi chú/mẹo.\n" +
+        "- Không nhồi chữ: mỗi box tối đa 2–4 dòng, dùng gạch đầu dòng khi cần.\n" +
+        "- Không lỗi font tiếng Việt, ký hiệu toán học hiển thị rõ ràng.\n" +
+        "- Dùng màu nhấn để phân biệt các phần (khởi động / bài tập / trọng tâm / HSG / phiếu luyện tập / phiếu bài tập về nhà / phiếu học tập trên lớp / hoạt động nhóm / checklist / ôn tập học kì) nếu có.\n\n" +
+        "ĐẦU RA:\n" +
+        "Một infographic hoàn chỉnh bằng tiếng Việt, cấu trúc rõ ràng, phù hợp học sinh THPT, sẵn sàng để giáo viên sử dụng trực tiếp trong giờ dạy hoặc giao bài (trình chiếu hoặc in A4).\n";
 
-      let promptBody = "";
-
-      if (activity === "warmup") {
-        // 1. Gợi mở vào bài học
-        promptBody =
-          "MỤC ĐÍCH SƯ PHẠM:\n" +
-          "- Đây là infographic KHỞI ĐỘNG bài học (gợi mở vào bài mới) cho chủ đề: \"" +
-          topic +
-          "\".\n" +
-          "- Nhiệm vụ: Gợi tò mò, tạo hứng thú, kích hoạt kiến thức nền và dẫn dắt học sinh vào nội dung chính.\n\n" +
-          "NỘI DUNG CHÍNH CẦN CÓ TRONG INFOGRAPHIC:\n" +
-          "1) Tiêu đề khởi động thật ngắn gọn, bắt tai, có thể hơi “bắt trend”, liên quan đến chủ đề \"" +
-          topic +
-          "\".\n" +
-          "2) 1–2 câu hỏi khởi động đơn giản, mang tính dự đoán hoặc lựa chọn (A/B/C/D), học sinh trung bình–khá vẫn trả lời được.\n" +
-          "3) Một tình huống thực tế gần gũi (trường học, gia đình, thể thao, mua sắm, mạng xã hội, giao thông,...) có liên quan đến chủ đề.\n" +
-          "4) 1 mini-quiz (1 câu hỏi trắc nghiệm hoặc câu hỏi mở ngắn) để học sinh trả lời nhanh trong 1 phút.\n" +
-          "5) Một câu dẫn kết nối: “Vì sao tình huống / câu hỏi trên lại liên quan đến bài học \"" +
-          topic +
-          "\" hôm nay?”\n\n" +
-          "CẤU TRÚC GỢI Ý CHO PROMPT:\n" +
-          "- Yêu cầu Gemini Pro Image vẽ infographic gồm các vùng: tiêu đề khởi động, câu hỏi nhanh, tình huống thực tế, mini-quiz, câu dẫn vào bài học.\n" +
-          "- Nhấn mạnh rằng đây là phần mở đầu, không giải thích lý thuyết chi tiết, chỉ gợi tò mò và tạo động lực học.\n";
-      } else if (activity === "class_practice") {
-        // 2. Bài tập áp dụng trong lớp
-        promptBody =
-          "MỤC ĐÍCH SƯ PHẠM:\n" +
-          "- Đây là infographic BÀI TẬP ÁP DỤNG TRONG LỚP cho chủ đề: \"" +
-          topic +
-          "\".\n" +
-          "- Đối tượng: học sinh trung bình–khá, cần luyện kỹ năng cơ bản và một chút vận dụng, có thể xen yếu tố thực tế.\n\n" +
-          "NỘI DUNG CHÍNH CẦN CÓ TRONG INFOGRAPHIC:\n" +
-          "1) Góc tóm tắt rất ngắn (2–3 ý) nhắc lại kiến thức trọng tâm liên quan đến \"" +
-          topic +
-          "\".\n" +
-          "2) 4–6 bài tập áp dụng trong lớp, gợi ý cấu trúc:\n" +
-          "   - 2 bài cơ bản (củng cố kỹ thuật, thao tác chuẩn, không bẫy).\n" +
-          "   - 2 bài mức độ thông hiểu – vận dụng (có dữ liệu, yêu cầu suy luận thêm 1 bước).\n" +
-          "   - 1–2 bài toán thực tế (tình huống đời sống, học đường, thể thao, tài chính đơn giản,... liên quan \"" +
-          topic +
-          "\" ).\n" +
-          "3) Có ô gợi ý (hint) rất ngắn cho 1–2 bài khó hơn.\n" +
-          "4) Nếu còn chỗ: Liệt kê 2 lỗi sai điển hình học sinh hay gặp khi làm bài liên quan đến chủ đề này.\n\n" +
-          "CẤU TRÚC GỢI Ý CHO PROMPT:\n" +
-          "- Yêu cầu Gemini Pro Image sắp xếp bài tập thành từng box đánh số rõ ràng.\n" +
-          "- Mỗi bài nên có ký hiệu 💡 cho gợi ý (nếu có), ⚠️ cho lỗi sai cần tránh (nếu có).\n" +
-          "- Phần tóm tắt kiến thức chỉ chiếm diện tích vừa phải, ưu tiên không gian cho bài tập.\n";
-      } else if (activity === "homework") {
-        // 3. Bài tập về nhà cho lớp
-        promptBody =
-          "MỤC ĐÍCH SƯ PHẠM:\n" +
-          "- Đây là infographic PHIẾU BÀI TẬP VỀ NHÀ cho chủ đề: \"" +
-          topic +
-          "\".\n" +
-          "- Mục tiêu: giúp học sinh nắm vững cơ bản, đồng thời có một phần luyện nâng cao nhẹ nhàng cho học sinh khá.\n\n" +
-          "NỘI DUNG CHÍNH CẦN CÓ TRONG INFOGRAPHIC:\n" +
-          "1) Tiêu đề: \"Bài tập về nhà – chủ đề " +
-          topic +
-          "\" và dòng phụ nhỏ ghi lớp, tên giáo viên (có thể: Toán 10 – Thầy Vũ Tiến Lực – THPT Nguyễn Hữu Cảnh).\n" +
-          "2) Chia rõ 3 phần:\n" +
-          "   - Phần A – Cơ bản bắt buộc: 4–5 bài giúp củng cố đúng trọng tâm, không bẫy.\n" +
-          "   - Phần B – Vận dụng khá: 2–3 bài yêu cầu suy luận thêm, lồng ghép 1 bài toán thực tế.\n" +
-          "   - Phần C – Thử thách tự chọn: 1–2 bài dành cho học sinh khá–giỏi muốn luyện thêm.\n" +
-          "3) Hướng dẫn ngắn gọn: Học sinh làm hết Phần A; khuyến khích làm thêm Phần B; Phần C dành cho bạn muốn thử thách.\n" +
-          "4) Box nhỏ “Mẹo khi làm bài ở nhà”: 2–3 gạch đầu dòng về cách trình bày, cách kiểm tra kết quả, thái độ tự học.\n\n" +
-          "CẤU TRÚC GỢI Ý CHO PROMPT:\n" +
-          "- Yêu cầu Gemini Pro Image trình bày rõ ba vùng A/B/C với màu sắc hoặc khung viền khác nhau.\n" +
-          "- Có chỗ trống nhỏ để học sinh ghi tên, lớp, ngày.\n";
-      } else if (activity === "hsg") {
-        // 4. Bài tập học sinh giỏi
-        promptBody =
-          "MỤC ĐÍCH SƯ PHẠM:\n" +
-          "- Đây là infographic BÀI TẬP HỌC SINH GIỎI cho chủ đề: \"" +
-          topic +
-          "\".\n" +
-          "- Mục tiêu: phát triển tư duy bậc cao, rèn kỹ năng phân tích – tổng hợp – sáng tạo.\n\n" +
-          "NỘI DUNG CHÍNH CẦN CÓ TRONG INFOGRAPHIC:\n" +
-          "1) Tiêu đề: \"Bài tập nâng cao / Học sinh giỏi – " +
-          topic +
-          "\".\n" +
-          "2) Hệ thống 4–6 bài toán HSG sắp xếp tăng dần độ khó, gợi ý cấu trúc:\n" +
-          "   - Bài 1–2: Mở đầu, vận dụng nâng cao, có thể kết hợp nhiều kiến thức trong chương.\n" +
-          "   - Bài 3–4: Bài có ý tưởng, cần biến đổi khéo, có thể gần dạng đề HSG cấp trường / cấp tỉnh.\n" +
-          "   - Bài 5 (tuỳ chọn): Bài kiểu Olympic nhỏ, đòi hỏi sáng tạo hơn.\n" +
-          "3) Với 1–2 bài quan trọng, thêm 1 dòng \"Định hướng tư duy\" (không giải chi tiết, chỉ gợi ý đường đi).\n" +
-          "4) Box nhỏ \"Chiến lược luyện HSG với chủ đề này\": 3–4 gạch đầu dòng (ví dụ: vẽ hình phụ, thử giá trị đơn giản, chuẩn hóa biểu thức,...).\n\n" +
-          "CẤU TRÚC GỢI Ý CHO PROMPT:\n" +
-          "- Yêu cầu Gemini Pro Image nhấn mạnh vẻ \"thử thách\" nhưng vẫn rõ ràng, không gây rối mắt.\n" +
-          "- Mỗi bài nên có số thứ tự nổi bật, có thể kèm icon nhỏ 🎯, 🧠, 🔍 cho các bài đặc biệt.\n";
-      } else if (activity === "core_knowledge") {
-        // 5. Kiến thức trọng tâm
-        promptBody =
-          "MỤC ĐÍCH SƯ PHẠM:\n" +
-          "- Đây là infographic TỔNG HỢP KIẾN THỨC TRỌNG TÂM cho chủ đề: \"" +
-          topic +
-          "\".\n" +
-          "- Mục tiêu: giúp học sinh nhìn thấy bức tranh tổng quan, hệ thống hoá công thức – khái niệm – bước giải mẫu.\n\n" +
-          "NỘI DUNG CHÍNH CẦN CÓ TRONG INFOGRAPHIC:\n" +
-          "1) Tiêu đề: \"Kiến thức trọng tâm – " +
-          topic +
-          "\".\n" +
-          "2) Các khối nội dung chính:\n" +
-          "   - Khái niệm hoặc định nghĩa chính (ngắn gọn, dễ hiểu).\n" +
-          "   - Công thức quan trọng (viết rõ ràng, nhóm theo cụm).\n" +
-          "   - Bảng so sánh hoặc sơ đồ tư duy nhỏ (nếu phù hợp) giữa các dạng / công thức.\n" +
-          "   - Quy trình 3–4 bước giải một dạng bài điển hình liên quan đến \"" +
-          topic +
-          "\".\n" +
-          "3) Góc nhỏ “Lỗi sai thường gặp”: 3–5 lỗi HS hay mắc.\n" +
-          "4) Góc nhỏ “Mẹo ghi nhớ nhanh”: 2–3 mẹo, có thể dưới dạng câu nói vui, hình ảnh ẩn dụ.\n\n" +
-          "CẤU TRÚC GỢI Ý CHO PROMPT:\n" +
-          "- Yêu cầu Gemini Pro Image tổ chức nội dung theo dạng sơ đồ / bảng / box, tránh dồn chữ.\n" +
-          "- Phần công thức nên nổi bật hơn bằng khung hoặc màu nền nhẹ.\n";
-      }
-
-      const finalPrompt =
-        baseIntro +
-        "CHỦ ĐỀ CỤ THỂ GIÁO VIÊN MUỐN DẠY:\n" +
-        "- \"" +
-        topic +
-        "\"\n\n" +
-        promptBody +
-        commonStyleBlock +
-        "ĐẦU RA MONG MUỐN CỦA PROMPT (KHI GỬI CHO GEMINI PRO IMAGE):\n" +
-        "- Tạo ra một infographic duy nhất, rõ ràng, dễ nhìn, phù hợp để giáo viên Toán THPT sử dụng trực tiếp trong giờ dạy.\n" +
-        "- Toàn bộ chữ bên trong infographic sử dụng tiếng Việt chuẩn, không lỗi dấu, không lẫn tiếng Anh (trừ khi là ký hiệu toán học).\n" +
-        "- Ưu tiên bố cục hợp lý, hỗ trợ dạy học tích cực, học sinh có thể nhìn và hiểu nhanh nội dung chính.\n";
-
-      return finalPrompt;
+      return headerPart + corePrompt;
     }
 
     generateBtn.addEventListener("click", () => {
@@ -637,16 +616,16 @@
     });
 
     clearBtn.addEventListener("click", () => {
-      topicEl.value = "";
-      activityTypeEl.value = "";
-      styleEl.selectedIndex = 0;
+      contentEl.value = "";
+      purposeEl.value = "";
+      styleEl.value = "";
       outputEl.value = "";
     });
 
     copyBtn.addEventListener("click", async () => {
       const text = outputEl.value.trim();
       if (!text) {
-        alert("Chưa có formpt để copy. Thầy hãy nhấn \"Tạo formpt\" trước.");
+        alert('Chưa có formpt để copy. Thầy hãy nhấn "Tạo formpt" trước.');
         return;
       }
       try {
@@ -654,7 +633,7 @@
         showToast();
       } catch (e) {
         console.error(e);
-        alert("Trình duyệt không cho copy tự động, thầy vui lòng tự bôi đen và copy.");
+        alert("Trình duyệt không cho copy tự động, thầy vui lòng bôi đen và copy thủ công.");
       }
     });
   </script>
